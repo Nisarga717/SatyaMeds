@@ -1,3 +1,4 @@
+/* General container styling */
 .home-container {
     display: flex;
     flex-direction: column;
@@ -11,7 +12,7 @@
     backdrop-filter: blur(8px);
 }
 
-
+/* Headings */
 h1 {
     font-size: 2.8em;
     color: #3f51b5; /* Indigo color */
@@ -19,20 +20,28 @@ h1 {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Paragraphs */
 p {
     font-size: 1.2em;
     color: #333;
     margin: 5px 0;
 }
 
+/* Button container */
 .button-container {
     margin-top: 20px;
     display: flex;
+    flex-wrap: wrap;
     gap: 20px; /* Space between buttons */
 }
 
+/* Buttons */
 .manufacturer-btn,
 .user-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Space between icon and text */
     padding: 12px 24px;
     font-size: 1.1em;
     background-color: #3f51b5;
@@ -41,7 +50,7 @@ p {
     border-radius: 5px;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-    transition: background-color 0.3s, box-shadow 0.3s;
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
     width: 150px; /* Set a fixed width for consistency */
 }
 
@@ -49,6 +58,7 @@ p {
 .user-btn:hover {
     background-color: #283593; /* Darker indigo on hover */
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px); /* Lift effect */
 }
 
 .user-btn {
@@ -57,6 +67,19 @@ p {
 
 .user-btn:hover {
     background-color: #388e3c; /* Darker green on hover */
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .button-container {
+        flex-direction: column;
+        gap: 10px; /* Reduce gap for smaller screens */
+    }
+
+    .manufacturer-btn,
+    .user-btn {
+        width: 100%; /* Full width for smaller screens */
+    }
 }
 
 /* Background styling for the entire page */

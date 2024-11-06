@@ -23,11 +23,11 @@ function Home() {
                 <p>Your trusted solution for medicine authenticity.</p>
                 <p>Ensuring every medicine is real and reliable.</p>
                 <div className="button-container">
-                    <button onClick={goToManufacturerForm} className="manufacturer-btn">
-                        Manufacturer Side
+                    <button onClick={goToManufacturerForm} className="manufacturer-btn" aria-label="Go to Manufacturer Side">
+                        <i className="fas fa-industry"></i> Manufacturer Side
                     </button>
-                    <button onClick={goToUserSide} className="user-btn">
-                        User Side
+                    <button onClick={goToUserSide} className="user-btn" aria-label="Go to User Side">
+                        <i className="fas fa-user-check"></i> User Side
                     </button>
                 </div>
             </div>

@@ -1,0 +1,31 @@
+/* src/components/Footer.css */
+.footer {
+    text-align: center;
+    padding: 15px 20px;
+    background-color: #3f51b5; /* Indigo color */
+    color: #fff;
+    margin-top: 20px;
+    border-top: 3px solid #283593; /* Darker indigo border */
+    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+.footer-links {
+    margin-top: 5px;
+}
+
+.footer-links a {
+    color: #ffeb3b; /* Yellowish color for contrast */
+    margin: 0 5px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #ffc107; /* Slightly darker yellow on hover */
+    text-decoration: underline;
+}

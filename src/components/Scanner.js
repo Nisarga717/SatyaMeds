@@ -124,7 +124,7 @@ const Scanner = () => {
   return (
     <Container>
       <Heading>Upload Medicine QR Code</Heading>
-      <FileInput type="file" accept="image/*" onChange={handleFileChange} />
+      <FileInput type="file" accept="image/*,.png,.jpg,.jpeg" onChange={handleFileChange} />
       {error && <p style={{ color: 'red' }}>Error: {error}</p>}
       {scannedData && verificationStatus && (
         <Result 

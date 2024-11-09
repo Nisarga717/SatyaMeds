@@ -1,4 +1,3 @@
-// Result.js
 import React from 'react';
 import styled from 'styled-components';
 
@@ -35,12 +34,27 @@ const DataText = styled.p`
   margin: 0;
 `;
 
+const MetadataText = styled.pre`
+  font-size: 1.1rem;
+  color: #333;
+  margin-top: 5px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+`;
+
 const StatusText = styled.p`
   font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
   color: ${({ isValid }) => (isValid ? '#4caf50' : 'red')};
   margin-top: 15px;
+`;
+
+const Note = styled.p`
+  font-size: 1rem;
+  color: #555;
+  margin-top: 20px;
+  text-align: center;
 `;
 
 const Result = ({ data, verificationStatus, medicineDetails }) => {
@@ -59,13 +73,17 @@ const Result = ({ data, verificationStatus, medicineDetails }) => {
             <DataText><strong>Medicine Name:</strong> {medicineDetails.name}</DataText>
           </DataBox>
           <DataBox>
-            <DataText><strong>Metadata:</strong> {medicineDetails.metadata}</DataText>
+            <DataText><strong>Metadata:</strong></DataText>
+            <MetadataText>{medicineDetails.metadata}</MetadataText>
           </DataBox>
           <DataBox>
             <DataText><strong>Manufacturer:</strong> {medicineDetails.manufacturer}</DataText>
           </DataBox>
         </>
       )}
+      <Note>
+        Note: Please match the fetched details with the information on the package to avoid counterfeiting and fraud.
+      </Note>
     </ResultContainer>
   );
 };

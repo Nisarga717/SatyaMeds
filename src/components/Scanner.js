@@ -1,4 +1,3 @@
-// Scanner.js
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Contract } from '@ethersproject/contracts';
@@ -8,7 +7,6 @@ import MedicineRegistryABI from './MedicineRegistryABI.json';
 import Result from './Result';
 
 const CONTRACT_ADDRESS = "0x477d93fF35C32d8C09eF640bb327c88e2db4e5E3";
-
 
 const Container = styled.div`
   display: flex;
@@ -47,11 +45,41 @@ const FileInput = styled.input`
   }
 `;
 
+const ComplaintButton = styled.button`
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: #d32f2f;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #b71c1c;
+  }
+`;
+
+const ComplaintForm = styled.textarea`
+  width: 80%;
+  height: 100px;
+  margin-top: 20px;
+  padding: 10px;
+  border: 2px solid #3f51b5;
+  border-radius: 8px;
+  font-size: 1rem;
+  resize: none;
+`;
+
 const Scanner = () => {
   const [error, setError] = useState(null);
   const [scannedData, setScannedData] = useState(null);
   const [verificationStatus, setVerificationStatus] = useState(null);
   const [medicineDetails, setMedicineDetails] = useState(null);
+  const [showComplaintForm, setShowComplaintForm] = useState(false);
+  const [complaintText, setComplaintText] = useState('');
 
   const verifyMedicine = async (medicineId) => {
     if (!window.ethereum) {
@@ -121,6 +149,14 @@ const Scanner = () => {
     }
   };
 
+  const handleComplaintSubmit = () => {
+    console.log("Complaint submitted:", complaintText);
+    alert("Your complaint has been sent to the manufacturer.");
+    setShowComplaintForm(false);
+    setComplaintText('');
+  };
+  
+
   return (
     <Container>
       <Heading>Upload Medicine QR Code</Heading>
@@ -132,6 +168,21 @@ const Scanner = () => {
           verificationStatus={verificationStatus} 
           medicineDetails={medicineDetails} 
         />
+      )}
+      {verificationStatus && !verificationStatus.isValid && (
+        <>
+          <ComplaintButton onClick={() => setShowComplaintForm(true)}>Raise a Complaint</ComplaintButton>
+          {showComplaintForm && (
+            <>
+              <ComplaintForm 
+                placeholder="Describe your complaint..." 
+                value={complaintText} 
+                onChange={(e) => setComplaintText(e.target.value)} 
+              />
+              <ComplaintButton onClick={handleComplaintSubmit}>Submit Complaint</ComplaintButton>
+            </>
+          )}
+        </>
       )}
     </Container>
   );
